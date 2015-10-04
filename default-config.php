@@ -1,8 +1,7 @@
 <?php
 
-/**
- * Default values, don't modify ! Change this values in config.php instead.
- */
+// Default values, don't modify ! Change this values in config.php instead.
+
 return array(
     'mirrorPluginsUrl' => 'http://mirror.local/netbeans/plugins/{version}/',
     'mirrorCertifiedUrl' => 'http://mirror.local/netbeans/updates/{version}/certified/',
