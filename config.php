@@ -1,5 +1,8 @@
 <?php
 
+// Define your own configuration here.
+// This will overload default configuration.
+
 return array(
     //'mirrorPluginsUrl' => 'http://define/your/own/url/',
     //'mirrorCertifiedUrl' => 'http://define/your/own/url',
