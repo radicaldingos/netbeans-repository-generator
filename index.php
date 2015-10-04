@@ -1,17 +1,23 @@
 <?php
 
+// URL of Netbeans catalogs. Don't need to modify this.
 define('PLUGINS_CATALOG_URL', 'http://plugins.netbeans.org/nbpluginportal/updates/{version}/catalog.xml');
 define('CERTIFIED_CATALOG_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/certified/catalog.xml');
 define('DISTRIBUTION_CATALOG_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/distribution/catalog.xml');
 
+// URL of Netbeans plugins and updates. Don't need to modify this.
 define('PLUGINS_URL', 'http://plugins.netbeans.org/nbpluginportal/files/nbms/');
 define('CERTIFIED_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/certified/');
 define('DISTRIBUTION_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/distribution/');
 
-define('MIRROR_PLUGINS_URL', 'http://miroir-cdadc.cismaa.air.defense.gouv.fr/netbeans/plugins/{version}/');
-define('MIRROR_CERTIFIED_URL', 'http://miroir-cdadc.cismaa.air.defense.gouv.fr/netbeans/updates/{version}/certified/');
-define('MIRROR_DISTRIBUTION_URL', 'http://miroir-cdadc.cismaa.air.defense.gouv.fr/netbeans/updates/{version}/distribution/');
+// Your mirror URL. That will be the URL where catalogs will be placed. Modify
+// to your needs.
+define('MIRROR_PLUGINS_URL', 'http://miroir.local/netbeans/plugins/{version}/');
+define('MIRROR_CERTIFIED_URL', 'http://miroir.local/netbeans/updates/{version}/certified/');
+define('MIRROR_DISTRIBUTION_URL', 'http://miroir.local/netbeans/updates/{version}/distribution/');
 
+// Directories where plugins and updates will be downloaded. You can use either
+// absolute or relatives paths.
 define('PLUGINS_TARGET_DIR', './netbeans/plugins/{version}/');
 define('PLUGINS_ARCHIVE_DIR', './netbeans/plugins/{version}/archives/');
 define('CERTIFIED_TARGET_DIR', './netbeans/updates/{version}/certified/');
@@ -19,6 +25,7 @@ define('CERTIFIED_ARCHIVE_DIR', './netbeans/updates/{version}/certified/archives
 define('DISTRIBUTION_TARGET_DIR', './netbeans/updates/{version}/distribution/');
 define('DISTRIBUTION_ARCHIVE_DIR', './netbeans/updates/{version}/distribution/archives/');
 
+// Booleans to determine if plugins and updates will be downloaded.
 define('UPDATE_PLUGINS', false);
 define('UPDATE_CERTIFIED', true);
 define('UPDATE_DISTRIBUTION', true);
