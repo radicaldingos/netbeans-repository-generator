@@ -16,4 +16,25 @@ return array(
     'updateCertified' => true,
     'updateDistribution' => true,
     'archiveOldFiles' => false,
+    
+    // Netbeans versions we want to get plugins
+    'pluginsVersions' => array(
+        //'7.0',
+        //'7.1',
+        //'7.2',
+        '7.3',
+        '7.4',
+        '8.0',
+        '8.1',
+    ),
+    
+    // Netbeans versions we want to get updates (certified and distribution)
+    'netbeansVersions' => array(
+        '7.3',
+        //'7.3.1',
+        '7.4',
+        //8.0.1,
+        '8.0.2',
+        '8.1',
+    ),
 );

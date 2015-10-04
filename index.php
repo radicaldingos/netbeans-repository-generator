@@ -12,27 +12,6 @@ define('PLUGINS_URL', 'http://plugins.netbeans.org/nbpluginportal/files/nbms/');
 define('CERTIFIED_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/certified/');
 define('DISTRIBUTION_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/distribution/');
 
-// Versions de Netbeans dont on veut récupérer les plugins
-$pluginsVersions = array(
-	//'7.0',
-	//'7.1',
-	//'7.2',
-	'7.3',
-	'7.4',
-	'8.0',
-	'8.1',
-);
-
-// Versions de Netbeans dont on veut récupérer les updates
-$netbeansVersions = array(
-    '7.3',
-    //'7.3.1',
-    '7.4',
-    //8.0.1,
-    '8.0.2',
-    '8.1',
-);
-
 $report = array();
 $report['plugins'] = array();
 $report['certified'] = array();
@@ -41,7 +20,6 @@ $report['distribution'] = array();
 // Récupération de la config
 $defaultConfig = ( require 'default-config.php');
 $userConfig = ( require 'config.php');
-
 $config = array_merge($defaultConfig, $userConfig);
 
 // Le traitement de téléchargement prend beaucoup de temps...
@@ -57,7 +35,7 @@ if ($config['updatePlugins']) {
     $params['archiveDir'] = $config['pluginsArchiveDir'];
     $params['modulesUrl'] = PLUGINS_URL;
     $params['mirrorUrl'] = $config['mirrorPluginsUrl'];
-    foreach ($pluginsVersions as $version) {
+    foreach ($config['pluginsVersions'] as $version) {
         $params['version'] = $version;
         $report['plugins'][$version] = update($params);
     }
@@ -73,7 +51,7 @@ if ($config['updateCertified']) {
     $params['archiveDir'] = $config['certifiedArchiveDir'];
     $params['modulesUrl'] = CERTIFIED_URL;
     $params['mirrorUrl'] = $config['mirrorCertifiedUrl'];
-    foreach ($netbeansVersions as $version) {
+    foreach ($config['netbeansVersions'] as $version) {
         $params['version'] = $version;
         $report['certified'][$version] = update($params);
     }
@@ -89,7 +67,7 @@ if ($config['updateDistribution']) {
     $params['archiveDir'] = $config['distributionArchiveDir'];
     $params['modulesUrl'] = DISTRIBUTION_URL;
     $params['mirrorUrl'] = $config['mirrorDistributionUrl'];
-    foreach ($netbeansVersions as $version) {
+    foreach ($config['netbeansVersions'] as $version) {
         $params['version'] = $version;
         $report['certified'][$version] = update($params);
     }
