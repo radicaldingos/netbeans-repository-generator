@@ -1,5 +1,7 @@
 <?php
 
+require 'functions.php';
+
 // URL of Netbeans catalogs. Don't need to modify this.
 define('PLUGINS_CATALOG_URL', 'http://plugins.netbeans.org/nbpluginportal/updates/{version}/catalog.xml');
 define('CERTIFIED_CATALOG_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/certified/catalog.xml');
@@ -9,34 +11,6 @@ define('DISTRIBUTION_CATALOG_URL', 'http://updates.netbeans.org/netbeans/updates
 define('PLUGINS_URL', 'http://plugins.netbeans.org/nbpluginportal/files/nbms/');
 define('CERTIFIED_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/certified/');
 define('DISTRIBUTION_URL', 'http://updates.netbeans.org/netbeans/updates/{version}/uc/final/distribution/');
-
-// Your mirror URL. That will be the URL where catalogs will be placed. Modify
-// to your needs.
-define('MIRROR_PLUGINS_URL', 'http://miroir.local/netbeans/plugins/{version}/');
-define('MIRROR_CERTIFIED_URL', 'http://miroir.local/netbeans/updates/{version}/certified/');
-define('MIRROR_DISTRIBUTION_URL', 'http://miroir.local/netbeans/updates/{version}/distribution/');
-
-// Directories where plugins and updates will be downloaded. You can use either
-// absolute or relatives paths.
-define('PLUGINS_TARGET_DIR', './netbeans/plugins/{version}/');
-define('PLUGINS_ARCHIVE_DIR', './netbeans/plugins/{version}/archives/');
-define('CERTIFIED_TARGET_DIR', './netbeans/updates/{version}/certified/');
-define('CERTIFIED_ARCHIVE_DIR', './netbeans/updates/{version}/certified/archives/');
-define('DISTRIBUTION_TARGET_DIR', './netbeans/updates/{version}/distribution/');
-define('DISTRIBUTION_ARCHIVE_DIR', './netbeans/updates/{version}/distribution/archives/');
-
-// Booleans to determine if plugins and updates will be downloaded.
-define('UPDATE_PLUGINS', false);
-define('UPDATE_CERTIFIED', true);
-define('UPDATE_DISTRIBUTION', true);
-define('ARCHIVE_OLD_FILES', true);
-
-require 'functions.php';
-
-$report = array();
-$report['plugins'] = array();
-$report['certified'] = array();
-$report['distribution'] = array();
 
 // Versions de Netbeans dont on veut récupérer les plugins
 $pluginsVersions = array(
@@ -59,19 +33,30 @@ $netbeansVersions = array(
     '8.1',
 );
 
+$report = array();
+$report['plugins'] = array();
+$report['certified'] = array();
+$report['distribution'] = array();
+
+// Récupération de la config
+$defaultConfig = ( require 'default-config.php');
+$userConfig = ( require 'config.php');
+
+$config = array_merge($defaultConfig, $userConfig);
+
 // Le traitement de téléchargement prend beaucoup de temps...
 set_time_limit(0);
 
 // Récupération des plugins
 // On lance le traitement pour chaque version
-if (UPDATE_PLUGINS) {
+if ($config['updatePlugins']) {
     $params = array();
-    $params['archiveModules'] = ARCHIVE_OLD_FILES;
+    $params['archiveModules'] = $config['archiveOldFiles'];
     $params['catalogUrl'] = PLUGINS_CATALOG_URL;
-    $params['targetDir'] = PLUGINS_TARGET_DIR;
-    $params['archiveDir'] = PLUGINS_ARCHIVE_DIR;
+    $params['targetDir'] = $config['pluginsTargetDir'];;
+    $params['archiveDir'] = $config['pluginsArchiveDir'];
     $params['modulesUrl'] = PLUGINS_URL;
-    $params['mirrorUrl'] = MIRROR_PLUGINS_URL;
+    $params['mirrorUrl'] = $config['mirrorPluginsUrl'];
     foreach ($pluginsVersions as $version) {
         $params['version'] = $version;
         $report['plugins'][$version] = update($params);
@@ -80,14 +65,14 @@ if (UPDATE_PLUGINS) {
 
 // Récupération des updates "certified"
 // On lance le traitement pour chaque version
-if (UPDATE_CERTIFIED) {
+if ($config['updateCertified']) {
     $params = array();
     $params['archiveModules'] = false;
     $params['catalogUrl'] = CERTIFIED_CATALOG_URL;
-    $params['targetDir'] = CERTIFIED_TARGET_DIR;
-    $params['archiveDir'] = CERTIFIED_ARCHIVE_DIR;
+    $params['targetDir'] = $config['certifiedTargetDir'];
+    $params['archiveDir'] = $config['certifiedArchiveDir'];
     $params['modulesUrl'] = CERTIFIED_URL;
-    $params['mirrorUrl'] = MIRROR_CERTIFIED_URL;
+    $params['mirrorUrl'] = $config['mirrorCertifiedUrl'];
     foreach ($netbeansVersions as $version) {
         $params['version'] = $version;
         $report['certified'][$version] = update($params);
@@ -96,14 +81,14 @@ if (UPDATE_CERTIFIED) {
 
 // Récupération des updates "certified"
 // On lance le traitement pour chaque version
-if (UPDATE_DISTRIBUTION) {
+if ($config['updateDistribution']) {
     $params = array();
     $params['archiveModules'] = false;
     $params['catalogUrl'] = DISTRIBUTION_CATALOG_URL;
-    $params['targetDir'] = DISTRIBUTION_TARGET_DIR;
-    $params['archiveDir'] = DISTRIBUTION_ARCHIVE_DIR;
+    $params['targetDir'] = $config['distributionTargetDir'];
+    $params['archiveDir'] = $config['distributionArchiveDir'];
     $params['modulesUrl'] = DISTRIBUTION_URL;
-    $params['mirrorUrl'] = MIRROR_DISTRIBUTION_URL;
+    $params['mirrorUrl'] = $config['mirrorDistributionUrl'];
     foreach ($netbeansVersions as $version) {
         $params['version'] = $version;
         $report['certified'][$version] = update($params);
