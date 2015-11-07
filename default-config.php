@@ -1,6 +1,6 @@
 <?php
 
-// Default values, don't modify ! Change this values in config.php instead.
+// Default values, don't modify! Change this values in config.php instead.
 
 return array(
     'mirrorPluginsUrl' => 'http://mirror.local/netbeans/plugins/{version}/',
@@ -28,7 +28,7 @@ return array(
         '8.1',
     ),
     
-    // Netbeans versions we want to get updates (certified and distribution)
+    // Netbeans versions we want to get updates (certified plugins and distribution)
     'netbeansVersions' => array(
         '7.3',
         //'7.3.1',

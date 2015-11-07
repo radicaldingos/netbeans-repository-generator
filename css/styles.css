@@ -1,0 +1,87 @@
+body {
+    font-family: "Trebuchet MS";
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+table th {
+    background: grey;
+    color: white;
+}
+
+table, table td {
+    border: 1px solid black;
+}
+
+table td.right {
+    text-align: right;
+}
+
+div#header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50px;
+    background: #004A7F url(../img/logo.png) 5px 5px no-repeat;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 50px;
+}
+
+div#form {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    right: 50%;
+    bottom: 0;
+    background: white;
+    padding: 10px;
+}
+
+fieldset {
+    background: ghostwhite;
+    margin-bottom: 10px;
+    border: 2px solid grey;
+    color: #303030;
+}
+
+div#result {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    background: grey;
+    color: white;
+    overflow: auto;
+}
+
+div.controls {
+
+}
+
+div.header {
+    display: inline-block;
+    width: 200px;
+    vertical-align: middle;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid grey;
+    color: grey;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+div.subfieldset {
+    margin-top: 10px;
+}
