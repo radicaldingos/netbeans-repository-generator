@@ -19,9 +19,9 @@ return array(
     
     // Netbeans versions we want to get plugins
     'pluginsVersions' => array(
-        //'7.0',
-        //'7.1',
-        //'7.2',
+        '7.0',
+        '7.1',
+        '7.2',
         '7.3',
         '7.4',
         '8.0',
@@ -31,9 +31,9 @@ return array(
     // Netbeans versions we want to get updates (certified plugins and distribution)
     'netbeansVersions' => array(
         '7.3',
-        //'7.3.1',
+        '7.3.1',
         '7.4',
-        //8.0.1,
+        '8.0.1',
         '8.0.2',
         '8.1',
     ),

@@ -1,6 +1,5 @@
 <?php
 
-// 
 /**
  * Define your own configuration here.
  * This will overload default configuration.
@@ -9,9 +8,9 @@
  */
 
 return array(
-    'mirrorPluginsUrl' => 'http://mirror.local/netbeans/plugins/{version}/',
-    'mirrorCertifiedUrl' => 'http://mirror.local/netbeans/updates/{version}/certified/',
-    'mirrorDistributionUrl' => 'http://mirror.local/netbeans/updates/{version}/distribution/',
+    //'mirrorPluginsUrl' => 'http://mirror.local/netbeans/plugins/{version}/',
+    //'mirrorCertifiedUrl' => 'http://mirror.local/netbeans/updates/{version}/certified/',
+    //'mirrorDistributionUrl' => 'http://mirror.local/netbeans/updates/{version}/distribution/',
     //'pluginsTargetDir' => './netbeans/plugins/{version}/',
     //'pluginsArchiveDir' => './netbeans/plugins/{version}/archives/',
     //'certifiedTargetDir' => './netbeans/updates/{version}/certified/',
@@ -25,9 +24,6 @@ return array(
     
     // Netbeans versions we want to get plugins
     /*'pluginsVersions' => array(
-        //'7.0',
-        //'7.1',
-        //'7.2',
         //'7.3',
         //'7.4',
         //'8.0',
