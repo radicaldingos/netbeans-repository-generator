@@ -1,7 +1,11 @@
 <?php
 
 /**
- * Fonction de debug
+ * Debug function
+ * 
+ * @param type $objet
+ * @param type $detail
+ * @param type $condition
  */
 function debug($objet = 'OK', $detail = false, $condition = true)
 {    
@@ -24,6 +28,14 @@ function debug($objet = 'OK', $detail = false, $condition = true)
     }
 }
 
+/**
+ * Function to format file size
+ * 
+ * @param type $bytes
+ * @param type $precision
+ * 
+ * @return type
+ */
 function formatBytes($bytes, $precision = 2) { 
     $units = array('o', 'Kio', 'Mio', 'Gio', 'Tio'); 
 
@@ -47,7 +59,12 @@ function toAbsolutePath($moduleUrl, $version, $modulesUrl)
 }
 
 /**
- * Extraction du nom du fichier
+ * Extraction of filename from a complete path
+ * 
+ * @param type $path
+ * @param type $modulesUrl
+ * 
+ * @return type
  */
 function extractFileName($path, $modulesUrl)
 {
@@ -60,6 +77,14 @@ function extractFileName($path, $modulesUrl)
 	return $ret;
 }
 
+/**
+ * Catalog downloading
+ * 
+ * @param type $catalogUrl
+ * @param type $version
+ * 
+ * @return type
+ */
 function getCatalog($catalogUrl, $version)
 {
 	$downloadPath = str_replace('{version}', $version, $catalogUrl);
@@ -73,6 +98,14 @@ function getCatalog($catalogUrl, $version)
 	return $catalog;
 }
 
+/**
+ * Definition of a module from a catalog
+ * 
+ * @param type $xmlModule
+ * @param type $modulesUrl
+ * 
+ * @return type
+ */
 function getModule($xmlModule, $modulesUrl)
 {
 	$module = array();
@@ -86,6 +119,14 @@ function getModule($xmlModule, $modulesUrl)
 	return $module;
 }
 
+/**
+ * Definition of a module group from a catalog
+ * 
+ * @param type $xmlModuleGroup
+ * @param type $modulesUrl
+ * 
+ * @return type
+ */
 function getModuleGroup($xmlModuleGroup, $modulesUrl)
 {
 	$moduleGroup = array();
@@ -98,11 +139,30 @@ function getModuleGroup($xmlModuleGroup, $modulesUrl)
 	return $moduleGroup;
 }
 
+/**
+ * Path transformation
+ * 
+ * Replace parameters between brackets with their values
+ * 
+ * Available parameters :
+ * - version : Netbeans version (e.g. "7.3")
+ * 
+ * @param type $chaine
+ * @param type $version
+ * @return type
+ */
 function transformPath($chaine, $version)
 {
     return str_replace('{version}', $version, $chaine);
 }
 
+/**
+ * Main process for updating files
+ * 
+ * @param type $params
+ * 
+ * @return type
+ */
 function update($params)
 {
 	// Initialisation du nom du répertoire de destination
@@ -211,6 +271,13 @@ function update($params)
 	return $plugins;
 }
 
+/**
+ * Main process for searching for updates
+ * 
+ * @param type $params
+ * 
+ * @return type
+ */
 function searchForUpdates($params)
 {
     // Initialisation du nom du répertoire de destination
@@ -282,6 +349,14 @@ function searchForUpdates($params)
 	return $plugins;
 }
 
+/**
+ * Definition of process parameters
+ * 
+ * @param type $category
+ * @param type $options
+ * 
+ * @return type
+ */
 function getParams($category, $options)
 {
     $params = array();
@@ -315,10 +390,12 @@ function getParams($category, $options)
 }
 
 /**
- * On remplace les \r\n de manière à être certain de bien "explode" la chaîne
- * des numéros de versions
+ * Extraction of Netbeans versions
+ * 
+ * We replace \r\n to be sure to correctly "explode" the string.
  * 
  * @param type $string
+ * 
  * @return type
  */
 function extractVersionNumbers($string)
@@ -327,6 +404,12 @@ function extractVersionNumbers($string)
     return explode("\n", $string);
 }
 
+/**
+ * Render of a view file
+ * 
+ * @param type $file
+ * @param type $options
+ */
 function render($file, $options)
 {
     foreach ($options as $key => $value) {
@@ -340,6 +423,14 @@ function render($file, $options)
     require 'views/layout.php';
 }
 
+/**
+ * Render of a partial view file
+ * 
+ * @param type $file
+ * @param type $options
+ * 
+ * @return type
+ */
 function renderPartial($file, $options)
 {
     foreach ($options as $key => $value) {
