@@ -1,12 +1,17 @@
 <?php
 
-// Define your own configuration here.
-// This will overload default configuration.
+// 
+/**
+ * Define your own configuration here.
+ * This will overload default configuration.
+ * 
+ * Use {version} in url and folders to insert the Netbeans version in paths
+ */
 
 return array(
-    //'mirrorPluginsUrl' => 'http://define/your/own/url/',
-    //'mirrorCertifiedUrl' => 'http://define/your/own/url',
-    //'mirrorDistributionUrl' => 'http://define/your/own/url',
+    'mirrorPluginsUrl' => 'http://mirror.local/netbeans/plugins/{version}/',
+    'mirrorCertifiedUrl' => 'http://mirror.local/netbeans/updates/{version}/certified/',
+    'mirrorDistributionUrl' => 'http://mirror.local/netbeans/updates/{version}/distribution/',
     //'pluginsTargetDir' => './netbeans/plugins/{version}/',
     //'pluginsArchiveDir' => './netbeans/plugins/{version}/archives/',
     //'certifiedTargetDir' => './netbeans/updates/{version}/certified/',
@@ -17,4 +22,26 @@ return array(
     //'updateCertified' => true,
     //'updateDistribution' => true,
     //'archiveOldFiles' => false,
+    
+    // Netbeans versions we want to get plugins
+    /*'pluginsVersions' => array(
+        //'7.0',
+        //'7.1',
+        //'7.2',
+        //'7.3',
+        //'7.4',
+        //'8.0',
+        //'8.1',
+    ),*/
+    
+    // Netbeans versions we want to get updates (certified plugins and 
+    // distribution)
+    /*'netbeansVersions' => array(
+        //'7.3',
+        //'7.3.1',
+        //'7.4',
+        //'8.0.1',
+        //'8.0.2',
+        //'8.1',
+    ),*/
 );
