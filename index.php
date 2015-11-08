@@ -21,6 +21,13 @@ if ($_POST) {
             }
             //debug($report);
         }
+        
+        if (isset($_POST['pack_files'])
+            && $_POST['pack_files']
+        ) {
+            $compress = isset($_POST['compress_packed_files']) && $_POST['compress_packed_files'] ? true : false;
+            packFiles(null, $compress);
+        }
     }
 }
 

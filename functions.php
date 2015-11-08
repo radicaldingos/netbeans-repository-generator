@@ -441,3 +441,31 @@ function renderPartial($file, $options)
     require "views/$file.php";
     return ob_get_clean();
 }
+
+/**
+ * Pack files
+ * 
+ * @param type $files
+ * @param type $compress
+ */
+function packFiles($files = null, $compress = false)
+{
+    try
+    {
+        $phar = new PharData('netbeans.tar');
+        if ($files) {
+            // We only pack the specified files
+        } else {
+            // We pack the whole directory
+            $phar->buildFromDirectory('netbeans');
+        }        
+        
+        if ($compress) {
+            $phar->compress(Phar::GZ);
+        }
+    } 
+    catch (Exception $e) 
+    {
+        echo "Exception : " . $e;
+    }
+}

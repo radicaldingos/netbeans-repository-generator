@@ -85,6 +85,14 @@
             <input type="checkbox" name="options[archive_old_files]" value="1"<?php echo $config['archiveOldFiles'] ? ' checked="checked"' : ''; ?> />
             <label>Archive old files</label>
         </div>
+        <div>
+            <input type="checkbox" name="options[pack_files]" value="1"<?php echo $config['packFiles'] ? ' checked="checked"' : ''; ?> />
+            <label>Pack repository files after download (in a netbeans.tar file)</label>
+        </div>
+        <div>
+            <input type="checkbox" name="options[compress_packed_files]" value="1"<?php echo $config['compressPackedFiles'] ? ' checked="checked"' : ''; ?> />
+            <label>Compress packed files (in a netbeans.tar.gz file)</label>
+        </div>
     </fieldset>
     
     <div class="controls">
