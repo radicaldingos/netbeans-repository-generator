@@ -4,6 +4,7 @@ require 'loader.php';
 
 if ($_POST) {
     if ($_POST['options']['submit'] == 'scan') {
+        // Scanning of updates catalogs to compare with local repository
         foreach ($categories as $category) {
             $params = getParams($category, $_POST['options']);
             foreach ($params['versions'] as $version) {
@@ -13,6 +14,7 @@ if ($_POST) {
             //debug($report);
         }
     } elseif ($_POST['options']['submit'] == 'download') {
+        // Downloading of new updates and deleting of old files
         foreach ($categories as $category) {
             $params = getParams($category, $_POST['options']);
             foreach ($params['versions'] as $version) {
@@ -31,6 +33,7 @@ if ($_POST) {
     }
 }
 
+// Rendering of view
 render('content', array(
     'config' => $config,
     'report' => $report,

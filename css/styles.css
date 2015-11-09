@@ -2,22 +2,13 @@ body {
     font-family: "Trebuchet MS";
 }
 
-table {
-    border-collapse: collapse;
-    font-size: 10px;
-}
-
-table th {
-    background: grey;
-    color: white;
-}
-
-table, table td {
-    border: 1px solid black;
-}
-
-table td.right {
-    text-align: right;
+h3 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid grey;
+    color: grey;
+    font-size: 16px;
+    font-weight: normal;
 }
 
 div#header {
@@ -73,15 +64,25 @@ div.header {
     vertical-align: middle;
 }
 
-h3 {
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid grey;
-    color: grey;
-    font-size: 16px;
-    font-weight: normal;
-}
-
 div.subfieldset {
     margin-top: 10px;
+}
+
+// Result table
+table {
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+table th {
+    background: grey;
+    color: white;
+}
+
+table, table td {
+    border: 1px solid black;
+}
+
+table td.right {
+    text-align: right;
 }

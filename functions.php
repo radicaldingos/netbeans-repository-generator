@@ -433,6 +433,8 @@ function render($file, $options)
  */
 function renderPartial($file, $options)
 {
+    // We transform table in multiple variables which will be available in the
+    // view
     foreach ($options as $key => $value) {
         $$key = $value;
     }

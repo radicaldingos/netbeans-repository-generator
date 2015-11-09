@@ -21,6 +21,9 @@ return array(
     //'updateCertified' => true,
     //'updateDistribution' => true,
     //'archiveOldFiles' => false,
+    //'packFiles' => false,
+    //'packOnlyNewFiles' => false,
+    //'compressPackedFiles' => false,
     
     // Netbeans versions we want to get plugins
     /*'pluginsVersions' => array(
