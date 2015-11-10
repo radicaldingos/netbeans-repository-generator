@@ -36,7 +36,8 @@ function debug($objet = 'OK', $detail = false, $condition = true)
  * 
  * @return type
  */
-function formatBytes($bytes, $precision = 2) { 
+function formatBytes($bytes, $precision = 2)
+{ 
     $units = array('o', 'Kio', 'Mio', 'Gio', 'Tio'); 
 
     $bytes = max($bytes, 0); 
@@ -50,6 +51,14 @@ function formatBytes($bytes, $precision = 2) {
     return round($bytes, $precision) . ' ' . $units[$pow]; 
 }
 
+/**
+ * 
+ * @param string $moduleUrl
+ * @param type $version
+ * @param type $modulesUrl
+ * 
+ * @return string
+ */
 function toAbsolutePath($moduleUrl, $version, $modulesUrl)
 {
 	if (substr($moduleUrl, 0, 7) !== 'http://') {
@@ -212,7 +221,7 @@ function update($params)
     }
 	//debug($existingPlugins);
 	
-	// Téléchargement des plugins
+	// Files downloading
 	$plugins = array();
 	$plugins['downloaded'] = array();
 	$plugins['not_downloaded'] = array();
@@ -262,7 +271,7 @@ function update($params)
 	
 	//debug($plugins);	
 
-	// Création du catalogue du miroir
+	// Creation of the mirror catalog
     $pluginsUrl = transformPath($params['modulesUrl'], $params['version']);
     $mirrorPluginsUrl = transformPath($params['mirrorUrl'], $params['version']);
 	$newCatalog = str_replace($pluginsUrl, $mirrorPluginsUrl . 'files/', $catalog);
@@ -454,6 +463,11 @@ function packFiles($files = null, $compress = false)
 {
     try
     {
+        // We remove the old archive
+        if (is_file('netbeans.tar')) {
+            unlink('netbeans.tar');
+        }
+        
         $phar = new PharData('netbeans.tar');
         if ($files) {
             // We only pack the specified files
